@@ -1,0 +1,23 @@
+<h1 class="mt-4">Online notes</h1>
+<p class="lead mb-3">Welcome <%= name %></p>
+
+<form action="/users/addnote" method="POST">
+  <div class="input-group mb-3">
+    <input name="note" type="text" class="form-control" placeholder="Note" aria-label="Note"
+      aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <button class="btn btn-secondary" type="submit">Add</button>
+    </div>
+  </div>
+</form>
+
+<ul class="list-group">
+  <% notes.slice().reverse().forEach((note) => { %>
+  <li class="list-group-item lead"> <%= note.note %>
+    <a href=<%= "/users/deletenote?noteId=" + note.id %> class="btn btn-secondary float-right">Delete</a>
+  </li>
+  <% }) %>
+</ul>
+
+
+<a href="/users/logout" class="btn btn-secondary">Logout</a>
